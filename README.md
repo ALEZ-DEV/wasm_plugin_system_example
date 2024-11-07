@@ -42,9 +42,9 @@ If this repo is outdated, don't hesitate to open a issue or make a PR to update 
 
 There's some source to help you understand the code
 
-[WIT Documentation](https://component-model.bytecodealliance.org/design/wit.html#worlds)
-[Wasmtime book](https://docs.wasmtime.dev/)
-[Wasmtime rust doc](https://docs.rs/wasmtime/latest/wasmtime/)
-[Zed blogpost](https://zed.dev/blog/zed-decoded-extensions)
-[Zed wasm crate](https://github.com/zed-industries/zed/tree/main/crates/extension_api)
+[WIT Documentation](https://component-model.bytecodealliance.org/design/wit.html#worlds)  
+[Wasmtime book](https://docs.wasmtime.dev/)  
+[Wasmtime rust doc](https://docs.rs/wasmtime/latest/wasmtime/)  
+[Zed blogpost](https://zed.dev/blog/zed-decoded-extensions)  
+[Zed wasm crate](https://github.com/zed-industries/zed/tree/main/crates/extension_api)  
 
