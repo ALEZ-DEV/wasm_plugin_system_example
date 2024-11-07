@@ -1,0 +1,12 @@
+package alez:api;
+
+world api {
+  record message {
+    content: string,
+    name: string,
+  }
+  
+  export init-plugin: func();
+
+  export greet: func(msg: message);
+}
