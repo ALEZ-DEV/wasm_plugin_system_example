@@ -8,7 +8,8 @@ impl Greeter for Someone {
     }
 
     fn greet(&self, msg: Message) {
-        println!("Oh! hello {}, my name is {}", msg.content, msg.name);
+        println!("Oh! {}, my name is {}", msg.content, msg.name);
+        api::cool_print();
     }
 }
 

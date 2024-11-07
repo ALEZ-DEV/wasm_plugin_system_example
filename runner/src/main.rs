@@ -1,12 +1,10 @@
-use std::fs::{self, read};
+use std::fs::read;
 
 use wasmtime::{
-    component::{Component, ComponentNamedList, Linker},
+    component::{Component, Linker},
     Config, Engine, Store,
 };
-use wasmtime_wasi::{ResourceTable, WasiCtx, WasiView};
-
-mod plugin;
+use wasmtime_wasi::{async_trait, ResourceTable, WasiCtx, WasiView};
 
 #[tokio::main]
 async fn main() {
@@ -19,6 +17,9 @@ async fn main() {
         Component::from_binary(&engine, &wasm_file).expect("Failed to compile wasm component");
 
     let mut linker = Linker::<WasmState>::new(&engine);
+    Api::add_to_linker(&mut linker, |s: &mut WasmState| s)
+        .expect("Failed to add API imports to linker");
+
     wasmtime_wasi::add_to_linker_async(&mut linker).unwrap();
 
     let mut store = Store::new(
@@ -34,7 +35,7 @@ async fn main() {
         .expect("Failed to instantiate API component");
 
     let msg = Message {
-        content: " world from the runner!".to_string(),
+        content: "hello world from wasm!".to_string(),
         name: "alez".to_string(),
     };
 
@@ -65,5 +66,13 @@ impl WasiView for WasmState {
 
     fn ctx(&mut self) -> &mut wasmtime_wasi::WasiCtx {
         &mut self.ctx
+    }
+}
+
+#[async_trait]
+impl ApiImports for WasmState {
+    async fn cool_print(&mut self) -> wasmtime::Result<()> {
+        println!("This cool print is running natively and has been called from wasm!");
+        Ok(())
     }
 }

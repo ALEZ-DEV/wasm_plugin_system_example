@@ -32,6 +32,7 @@
           else
             rust.stable.latest.default.override {
               extensions = [ "rust-src" "rustfmt" ];
+              targets = [ "x86_64-unknown-linux-gnu" "wasm32-wasip2" ];
             };
       };
 

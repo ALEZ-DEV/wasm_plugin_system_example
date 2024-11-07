@@ -23,7 +23,7 @@ macro_rules! register_plugin {
     ($extension_type:ty) => {
         #[export_name = "init-plugin"]
         pub extern "C" fn __init_extension() {
-            api::load_plugin(Box::new(<$extension_type as api::Greeter>::new()));
+            let _ = api::load_plugin(Box::new(<$extension_type as api::Greeter>::new()));
         }
     };
 }

@@ -5,6 +5,8 @@ world api {
     content: string,
     name: string,
   }
+
+  import cool-print: func();
   
   export init-plugin: func();
 
