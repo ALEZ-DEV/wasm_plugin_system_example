@@ -1,5 +1,7 @@
 package alez:api;
 
+// WIT documentation: https://component-model.bytecodealliance.org/design/wit.html
+
 world api {
   record message {
     content: string,
